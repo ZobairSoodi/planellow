@@ -21,13 +21,19 @@ export default function AddForm(props) {
         const handleForm = (e)=>{
             let name = e.target.name;
             let value = e.target.value;
-            setForm((old)=>{return {...old, [name]: value}})
+            setForm((old)=>{return {...old, [name]: value}});
         }
 
-        const handleSubmit = ()=>{
-            axios.post('', form).then((res)=>{
+        const handleSubmit = (e)=>{
+            e.preventDefault();
+            let dataForm = new FormData();
+            for (const key in form){
+                dataForm.append(key, form[key]);
+            }
+            axios.post('http://localhost/planellow/backend/add.php', dataForm).then((res)=>{
+                console.log(res);
                 handleClose();
-                data.set((old)=>{return [...old, res.data]})
+                data.set((old)=>{return [...old, res.data]});
             });
         }
 
@@ -47,24 +53,23 @@ export default function AddForm(props) {
                         <textarea name="description" placeholder='Description' onChange={handleForm}></textarea>
                     </div>
                     <div id='date-container'>
-                        <label htmlFor="start_time">from
-                            <input type="date" name="start_time" onChange={handleForm}></input>
+                        <label htmlFor="from_date">from
+                            <input type="date" name="from_date" onChange={handleForm}></input>
                         </label>
-
-                        <label htmlFor="finish_time">to
-                            <input type="date" name="finish_time" onChange={handleForm}></input></label>
+                        <label htmlFor="to_date">to
+                            <input type="date" name="to_date" onChange={handleForm}></input></label>
                     </div>
                     <div id='radio-container'>
                         <span>Importance</span>
                         <div>
                             <label>
-                                <input type="radio" name='importance' value="high" onChange={handleForm}/>High
+                                <input type="radio" name='is_important' value="high" onChange={handleForm}/>High
                             </label>
                             <label>
-                                <input type="radio" name='importance' value="medium" onChange={handleForm}/>Medium
+                                <input type="radio" name='is_important' value="medium" onChange={handleForm}/>Medium
                             </label>
                             <label>
-                                <input type="radio" name='importance' value="low" onChange={handleForm}/>Low
+                                <input type="radio" name='is_important' value="low" onChange={handleForm}/>Low
                             </label>
                         </div>
                     </div>

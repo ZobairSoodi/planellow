@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import AddForm from './components/AddForm/AddForm';
 import EditForm from './components/EditForm/EditForm';
+import Home from './components/landing page/Home';
 
 function App() {
   const[openAdd, setOpenAdd] = useState(false);
@@ -11,6 +12,7 @@ function App() {
       <button onClick={(()=>{setOpenEdit(true)})}>Edit</button>
       <AddForm open={openAdd} setOpen={setOpenAdd}></AddForm>
       <EditForm open={openEdit} setOpen={setOpenEdit}></EditForm>
+      <Home/>
     </div>
   );
 }

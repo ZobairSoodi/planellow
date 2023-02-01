@@ -1,0 +1,34 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color:#9AA6E7;
+}
+
+#t1{
+    position: absolute;
+    font-size: 60px;
+    top: 100px;
+    left: 200px;
+    color: #000;
+}
+#im1{
+    position: absolute;
+    right:0px;
+    bottom: 50px;
+}
+
+
+
+#cont{
+    margin-top: 100px;
+    padding-right: 400px;
+    position: relative;
+    left: 50px;
+    bottom: 20px;
+}
+
+.btn, .btn:hover{
+    background-color: #9AA6E7;
+    color:#9AA6E7;
+}
